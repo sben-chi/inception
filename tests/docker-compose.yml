@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+  mariadb:
+    build:
+      context: ./test_m
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - my-network
+    restart: always
+  
+  wordpress:
+    depends_on:
+      - mariadb
+    build:
+      context: ./test_w
+      dockerfile: Dockerfile
+    volumes:
+      - wordpress:/var/www/html/sben-chi_site
+    env_file:
+      - .env
+    networks:
+      - my-network
+    restart: always
+
+  nginx:
+    depends_on:
+      - wordpress
+    build:
+      context: ./test_n/
+      dockerfile: Dockerfile
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/html/sben-chi_site
+    networks:
+      - my-network
+    restart: always
+
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./
+
+networks:
+  my-network:
+      driver: bridge
