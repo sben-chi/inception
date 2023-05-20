@@ -1,0 +1,1 @@
+sudo docker image build --file ./requirements/nginx/Dockerfile --tag nginx:my_nginx .

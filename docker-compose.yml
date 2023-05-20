@@ -1,14 +1,15 @@
-version: '3.7'
+version: '3.1'
 
 services:
   mariadb:
     build:
-      context: ./test_m
+      context: ./mariadb
       dockerfile: Dockerfile
+    container_name: mariadb
     env_file:
       - .env
     ports:
-      - 3306:3306
+      - "3306:3306"
     volumes:
       - mariadb:/var/lib/mysql
     networks:
@@ -19,10 +20,11 @@ services:
     depends_on:
       - mariadb
     build:
-      context: ./test_w
+      context: ./wordpress
       dockerfile: Dockerfile
+    container_name: wp
     volumes:
-      - wordpress:/var/www/html/sben-chi_site
+      - wordpress:/var/www/html/sben-chi_blog/
     env_file:
       - .env
     networks:
@@ -33,12 +35,12 @@ services:
     depends_on:
       - wordpress
     build:
-      context: ./test_n/
+      context: ./nginx
       dockerfile: Dockerfile
     ports:
       - "443:443"
     volumes:
-      - wordpress:/var/www/html/sben-chi_site
+      - wordpress:/var/www/html/sben-chi_blog
     networks:
       - my-network
     restart: always
@@ -49,13 +51,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ./
+      device: ${PWD}/wordpress_v
   mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ./
+      device: ${PWD}/maria_v
 
 networks:
   my-network:
