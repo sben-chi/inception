@@ -8,7 +8,7 @@
 cd /var/www/html/sben-chi_blog/;
 
 # Download WordPress core and plugins.
-#wp core download --allow-root;
+wp core download --allow-root;
 
 ## Default DB name and user.
 ## Install a basic site. The title doesn't matter.

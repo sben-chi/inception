@@ -2,8 +2,6 @@ FROM debian:buster
 
 RUN apt-get update && apt-get install -y wget php-fpm php-mysql mariadb-client\
 	&& wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-	#&& wget https://wordpress.org/latest.tar.gz \
-	#&& tar -xzvf latest.tar.gz \
 	&& mkdir -p /var/www/html/sben-chi_blog/ \
 	&& chmod +x /var/www/html/sben-chi_blog/ wp-cli.phar \
 	&& mv wp-cli.phar /usr/local/bin/wp
