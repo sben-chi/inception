@@ -37,6 +37,7 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    container_name: nginx
     ports:
       - "443:443"
     volumes:
