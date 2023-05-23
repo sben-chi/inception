@@ -1,7 +1,7 @@
 path=$(HOME)/data
 
 all:
-	mkdir $(path)
+	mkdir -p $(path)/wp_v $(path)/db_v
 	sudo docker-compose up --build
 
 up:
