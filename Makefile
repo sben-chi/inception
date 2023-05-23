@@ -22,4 +22,8 @@ sign_certifcate:
 re: fclean all
 
 fclean: down
+<<<<<<< HEAD
 	rm -rf $(path)
+=======
+	rm -rf wordpress_v maria_v
+>>>>>>> 260592a5bdfdc1b5de6724870d7c94d13d455c92
