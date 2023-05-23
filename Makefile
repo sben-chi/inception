@@ -1,1 +1,25 @@
-sudo docker image build --file ./requirements/nginx/Dockerfile --tag nginx:my_nginx .
+path=$(HOME)/data
+
+all:
+	mkdir $(path)
+	sudo docker-compose up --build
+
+up:
+	sudo docker-compose up -d
+
+down:
+	sudo docker-compose down -v --rmi all
+
+stop:
+	sudo docker-compose stop
+
+start:
+	sudo docker-compose start
+
+sign_certifcate:
+	sudo docker cp nginx:/etc/ssl/certs/nginx-selfsigned.crt $(HOME)/Desktop
+
+re: fclean all
+
+fclean: down
+	rm -rf $(path)

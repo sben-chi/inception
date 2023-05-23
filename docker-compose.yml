@@ -37,6 +37,7 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    container_name: nginx
     ports:
       - "443:443"
     volumes:
@@ -51,13 +52,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ${PWD}/wordpress_v
+      device: /home/sben-chi/data
   mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ${PWD}/maria_v
+      device: /home/sben-chi/data
 
 networks:
   my-network:
