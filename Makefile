@@ -1,7 +1,7 @@
 path=$(HOME)/data
 
 all:
-	mkdir -p $(path)/wp_v $(path)/db_v
+	sudo mkdir -p $(path)/wp_v $(path)/db_v
 	sudo docker-compose up --build
 
 up:
@@ -22,8 +22,4 @@ sign_certifcate:
 re: fclean all
 
 fclean: down
-<<<<<<< HEAD
-	rm -rf $(path)
-=======
-	rm -rf wordpress_v maria_v
->>>>>>> 260592a5bdfdc1b5de6724870d7c94d13d455c92
+	sudo rm -rf $(path)
