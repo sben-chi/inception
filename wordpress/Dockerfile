@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y wget php-fpm php-mysql mariadb-client\
 	&& chmod +x /var/www/html/sben-chi_blog/ wp-cli.phar \
 	&& mv wp-cli.phar /usr/local/bin/wp
 
-COPY tools/wp-config.php /var/www/html/sben-chi_blog/
+# COPY tools/wp-config.php /var/www/html/sben-chi_blog/
 COPY tools/run.sh ./
+ENTRYPOINT [ "sh", "run.sh" ]
 
-CMD [ "sh", "run.sh" ]
+# CMD [ "sh", "run.sh" ]

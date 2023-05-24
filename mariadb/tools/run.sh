@@ -4,7 +4,7 @@
 mkdir -p /run/mysqld;
 chown -R mysql:mysql /run/mysqld;
 
-mysql -u root -e "CREATE DATABASE wordpress ;\
+mysql -u root -e "CREATE DATABASE ${MYSQL_DATABASE} ;\
 				CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}'; \
 				GRANT ALL PRIVILEGES ON wordpress.* TO '${MYSQL_USER}'@'%' ; FLUSH PRIVILEGES;"
 

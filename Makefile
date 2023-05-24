@@ -1,4 +1,4 @@
-path=$(HOME)/data
+path=/home/sben-chi/data
 
 all:
 	sudo mkdir -p $(path)/wp_v $(path)/db_v
