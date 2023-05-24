@@ -1,7 +1,7 @@
-path=/home/sben-chi/data/
+path=$(HOME)/data
+
 all:
-	sudo mkdir -p $(path)/wordpress_v
-	sudo mkdir -p $(path)/maria_v
+	sudo mkdir -p $(path)/wp_v $(path)/db_v
 	sudo docker-compose up --build
 
 up:
@@ -22,4 +22,4 @@ sign_certifcate:
 re: fclean all
 
 fclean: down
-	sudo rm -rf $(path)/wordpress_v $(path)/maria_v $(path)
+	sudo rm -rf $(path)

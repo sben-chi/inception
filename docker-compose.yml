@@ -52,13 +52,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/sben-chi/data/wordpress_v
+      device: /home/sben-chi/data/wp_v
   mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/sben-chi/data/maria_v
+      device: /home/sben-chi/data/db_v
 
 networks:
   my-network:
