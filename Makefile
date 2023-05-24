@@ -1,23 +1,25 @@
+path=/home/sben-chi/data/
 all:
-	mkdir wordpress_v maria_v
-	docker-compose up --build
+	sudo mkdir -p $(path)/wordpress_v
+	sudo mkdir -p $(path)/maria_v
+	sudo docker-compose up --build
 
 up:
-	docker-compose up -d
+	sudo docker-compose up -d
 
 down:
-	docker-compose down -v --rmi all
+	sudo docker-compose down -v --rmi all
 
 stop:
-	docker-compose stop
+	sudo docker-compose stop
 
 start:
-	docker-compose start
+	sudo docker-compose start
 
 sign_certifcate:
-	docker cp nginx:/etc/ssl/certs/nginx-selfsigned.crt $(Home)/Desktop
+	sudo docker cp nginx:/etc/ssl/certs/nginx-selfsigned.crt $(HOME)/Desktop
 
 re: fclean all
 
 fclean: down
-	rm -rf wordpress_v maria_v
+	sudo rm -rf $(path)/wordpress_v $(path)/maria_v $(path)
