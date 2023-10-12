@@ -1,20 +1,21 @@
+DOCKER-COMPOSE=sudo docker-compose -f ./srcs/docker-compose.yml
 path=/home/sben-chi/data
 
 all:
 	sudo mkdir -p $(path)/wp_v $(path)/db_v
-	sudo docker-compose up --build
+	$(DOCKER-COMPOSE) up --build
 
 up:
-	sudo docker-compose up -d
+	$(DOCKER-COMPOSE) up -d
 
 down:
-	sudo docker-compose down -v --rmi all
+	$(DOCKER-COMPOSE) down -v --rmi all
 
 stop:
-	sudo docker-compose stop
+	$(DOCKER-COMPOSE) stop
 
 start:
-	sudo docker-compose start
+	$(DOCKER-COMPOSE) start
 
 sign_certifcate:
 	sudo docker cp nginx:/etc/ssl/certs/nginx-selfsigned.crt $(HOME)/Desktop
